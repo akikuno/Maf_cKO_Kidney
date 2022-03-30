@@ -3,7 +3,7 @@
 ###############################################################################
 
 options(repos = "http://cran.us.r-project.org")
-if (!requireNamespace("pacman", quietly = T)) install.packages("pacman")
+if (!require("pacman", quietly = TRUE)) install.packages("pacman")
 pacman::p_load(tidyverse, ggrepel)
 
 ###############################################################################
@@ -22,32 +22,36 @@ tcc_result <- read_csv(file)
 # Volucano and MA plots
 ###############################################################################
 
-qval_min10 <- sort(tcc_result$q.value)[10]
-mval_min10 <- sort(tcc_result$m.value)[10]
-mval_max10 <- sort(tcc_result$m.value, decreasing = TRUE)[10]
+TARGETS <- c("SLC5A2", "SLC2A2", "NOX4", "MAF")
+TARGETS <- str_c(TARGETS, "$")
+TARGETS <- str_c(TARGETS, collapse = "|")
+# qval_min10 <- sort(tcc_result$q.value)[10]
+# mval_min10 <- sort(tcc_result$m.value)[10]
+# mval_max10 <- sort(tcc_result$m.value, decreasing = TRUE)[10]
 
-tcc_result <- tcc_result %>%
+tcc_volcano <-
+    tcc_result %>%
     mutate(log10qval = -log10(q.value)) %>%
     mutate(label = case_when(
-        estimatedDEG == 1 & high_exp == "mcto" ~ "MCTO-UP",
-        estimatedDEG == 1 & high_exp == "wt" ~ "MCTO-DOWN",
+        estimatedDEG == 1 & expression == "cko-high" ~ "cKO-UP",
+        estimatedDEG == 1 & expression == "cko-low" ~ "cKO-DOWN",
         TRUE ~ "NO"
     )) %>%
     mutate(annotate = case_when(
-        estimatedDEG == 1 & (q.value <= qval_min10 | m.value <= mval_min10 | m.value >= mval_max10) ~ gene_id,
+        estimatedDEG == 1 & str_detect(gene_id, TARGETS) ~ gene_id,
         TRUE ~ as.character(NA)
     ))
 
 
 mycolors <- c("#5588BB", "#F06060", "#E5E5E5")
-names(mycolors) <- c("MCTO-DOWN", "MCTO-UP", "NO")
+names(mycolors) <- c("cKO-DOWN", "cKO-UP", "NO")
 
 g_volcano <-
-    ggplot(tcc_result, aes(x = m.value, y = log10qval, color = label, label = annotate)) +
+    ggplot(tcc_volcano, aes(x = m.value, y = log10qval, color = label, label = annotate)) +
     geom_point() +
-    geom_text_repel() +
     scale_colour_manual(values = mycolors) +
-    labs(x = "log2 Fold Change", y = "-log10 Q-value", colour = "") +
+    geom_label_repel(box.padding = 1, max.overlaps = Inf, show.legend = FALSE) +
+    labs(x = "log2 Fold Change", y = "-log10 q-value", colour = "") +
     theme_bw() +
     theme(
         axis.title = element_text(size = 18),
@@ -55,7 +59,6 @@ g_volcano <-
         legend.text = element_text(size = 15),
         plot.background = element_rect(fill = "white")
     )
-
 
 ###############################################################################
 # Export results

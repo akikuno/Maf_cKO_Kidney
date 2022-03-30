@@ -11,8 +11,6 @@
 # Counting reads to genomic features by featureCounts
 ###############################################################################
 
-mkdir -p reports
-
 gtf="$(find data/mouse_genome/*gtf)"
 
 featureCounts -T "$threads" -t exon -g gene_name -a "$gtf" \
