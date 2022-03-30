@@ -1,2 +1,4 @@
-# MafcKO_Kidney_Fujino
+# Maf cKO Kidney
+
+Code repository
  
