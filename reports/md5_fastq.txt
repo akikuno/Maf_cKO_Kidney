@@ -1,0 +1,16 @@
+27650bc6aaeb21822775143aba81c455  data/fastq/LAB-146-01_R1.fq.gz
+edcf0a520eeeb8762b1727d2242ed2a3  data/fastq/LAB-146-01_R2.fq.gz
+9f20f5115079b547e7efe0b9073a5ca9  data/fastq/LAB-146-02_R1.fq.gz
+eed9e643bc14c047c5530089a4d11566  data/fastq/LAB-146-02_R2.fq.gz
+3b02144da557d3f93fa7737b9f326539  data/fastq/LAB-146-03_R1.fq.gz
+ac8cf47cd356da429b34c2573f612f42  data/fastq/LAB-146-03_R2.fq.gz
+14c659a363c4177230635cd0f9d11e9c  data/fastq/LAB-146-04_R1.fq.gz
+180b5504711c284ad510b20c3cde202f  data/fastq/LAB-146-04_R2.fq.gz
+cac7387f69a82642c6c0ff6192c395a2  data/fastq/LAB-146-05_R1.fq.gz
+e13aa9b91ecd6799d388a06b0222cb29  data/fastq/LAB-146-05_R2.fq.gz
+5b0d3a53a9be231b06a89c33e61a46cf  data/fastq/LAB-146-06_R1.fq.gz
+0d13da723368858f084ac56c09292efd  data/fastq/LAB-146-06_R2.fq.gz
+a641637424e55a0045ca6b8911ab3804  data/fastq/LAB-146-07_R1.fq.gz
+81bd58f4958e0b7ba58777432a9d5be5  data/fastq/LAB-146-07_R2.fq.gz
+7d2e97835dbccc56c356417a145cb5f2  data/fastq/LAB-146-08_R1.fq.gz
+c25e6c9aa212c72bf20a4cb52eb8a0ba  data/fastq/LAB-146-08_R2.fq.gz
