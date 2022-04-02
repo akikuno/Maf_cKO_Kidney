@@ -13,11 +13,6 @@ wget -qP data/mouse_genome \
     ftp://ftp.ensembl.org/pub/release-"$release"/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna.primary_assembly.fa.gz &&
     gzip -d data/mouse_genome/Mus_musculus.GRCm38.dna.primary_assembly.fa.gz &
 
-# cDNA for kallisto mapping
-wget -qP data/mouse_genome \
-    ftp://ftp.ensembl.org/pub/release-"$release"/fasta/mus_musculus/cdna/Mus_musculus.GRCm38.cdna.all.fa.gz &&
-    gzip -d data/mouse_genome/Mus_musculus.GRCm38.cdna.all.fa.gz &
-
 # Gene information
 wget -qP data/mouse_genome \
     ftp://ftp.ensembl.org/pub/release-"$release"/gtf/mus_musculus/Mus_musculus.GRCm38."$release".gtf.gz &&

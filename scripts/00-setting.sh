@@ -11,4 +11,4 @@ conda config --add channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
 conda create -y -n ngs
-conda install -y -n ngs wget fastqc subread deeptools r-base r-essentials
+conda install -y -n ngs wget fastqc sra-tools subread deeptools r-base r-essentials
